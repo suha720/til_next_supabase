@@ -1,11 +1,7 @@
-import ButtonTest from '@/components/ButtonTest';
-import TestComponent from '@/components/TestComponent';
-import Image from 'next/image';
+import ButtonTest from "@/components/ButtonTest";
 
 export default function Home() {
-  return (
-    <div>
-      <ButtonTest />
-    </div>
-  );
+  return <div>
+    <ButtonTest></ButtonTest>
+  </div>;
 }
