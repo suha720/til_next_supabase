@@ -59,7 +59,7 @@ export interface TodoState {
   getFilteredTodos: () => Todo[]; // 현재 선택된 할일 목록만 반환
 }
 
-// React Query의 상태를 Zustand 에서 관리하기 위한 스토어
+// React Query Store 타입정의
 export interface QueryState {
   // State
   selectedUserId: number | null; // 현재 선택된 사용자 ID

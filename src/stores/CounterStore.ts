@@ -51,7 +51,5 @@ const counterLocalState = create<CounterState>()(
 // 3 단계 - custom Hook 정의
 export const useCounterStore = () => {
   const { count, increment, decrement, reset, setCount } = counterLocalState();
-//   const ctx = counterLocalState();
   return { count, increment, decrement, reset, setCount };
-//   return ctx;
 };
