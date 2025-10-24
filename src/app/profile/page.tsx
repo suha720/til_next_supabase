@@ -1,6 +1,5 @@
-
-function page() {
-  return <div>page</div>;
+function ProfilePage() {
+  return <div>ProfilePage</div>;
 }
 
-export default page;
+export default ProfilePage;

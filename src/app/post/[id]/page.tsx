@@ -1,12 +1,12 @@
-interface ProfileDetailProps {
+interface PostDetailProps {
   params: {
     id: string;
   };
 }
 
-function ProfileDetail({ params }: ProfileDetailProps) {
+function PostDetail({ params }: PostDetailProps) {
   const { id } = params;
-  return <div>page</div>;
+  return <div>{id} PostDetail</div>;
 }
 
-export default ProfileDetail;
+export default PostDetail;
