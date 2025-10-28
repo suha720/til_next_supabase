@@ -1,7 +1,7 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { useSignUp } from '@/hooks/mutation/useSignUp';
+import { useSignUp } from '@/hooks/mutations/useSignUp';
 import Link from 'next/link';
 import { useState } from 'react';
 
