@@ -5,6 +5,7 @@ import QueryProvider from '@/components/providers/QueryProvider';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Sun } from 'lucide-react';
+import ToastProvider from '@/components/providers/ToastProvider';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -36,6 +37,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className='flex min-h-screen flex-col'>
+          {/* 컴포넌트 배치 */}
+          <ToastProvider />
+
           <QueryProvider>
             <header className='h-15 border-b'>
               <div className='m-auto flex h-full w-full max-w-175 justify-between px-4'>
@@ -53,12 +57,22 @@ export default function RootLayout({
                   <div className='hover:bg-muted cursor-pointer rounded-full p-2'>
                     <Sun />
                   </div>
-                  <Image src={defaultAvatar} alt='zz' width={24} height={24} className='h-6'/>
+                  <Image
+                    src={defaultAvatar}
+                    alt='zz'
+                    width={24}
+                    height={24}
+                    className='h-6'
+                  />
                 </div>
               </div>
             </header>
-            <main className='m-auto w-full max-w-175 flex-1 border-x px-4 py-6'>{children}</main>
-            <footer className='text-muted-foreground border-t py-10 text-center'>@devsoo</footer>
+            <main className='m-auto w-full max-w-175 flex-1 border-x px-4 py-6'>
+              {children}
+            </main>
+            <footer className='text-muted-foreground border-t py-10 text-center'>
+              @devsoo
+            </footer>
           </QueryProvider>
         </div>
       </body>
