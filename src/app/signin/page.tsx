@@ -1,6 +1,7 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { useSignInWithGoogle } from '@/hooks/mutations/useSignInWithGoogle';
 import { useSignInWithKakao } from '@/hooks/mutations/useSignInWithKaKao';
 import { useSignInWithPassword } from '@/hooks/mutations/useSignInWithPassword';
 import Link from 'next/link';
@@ -25,6 +26,13 @@ function SignIn() {
     useSignInWithKakao();
   const handleSignInWithKaKao = () => {
     signInWithKakao('kakao');
+  };
+
+  // 구글 로그인
+  const { mutate: signInWithGoogle, isPending: isPendingGoogle } =
+    useSignInWithKakao();
+  const handleSignInWithGoogle = () => {
+    signInWithKakao('google');
   };
 
   return (
@@ -64,6 +72,14 @@ function SignIn() {
           disabled={isPendingKakao}
         >
           카카오 계정 로그인
+        </Button>
+        {/* 구글 소셜 로그인*/}
+        <Button
+          className='w-full cursor-pointer'
+          onClick={handleSignInWithGoogle}
+          disabled={isPendingGoogle}
+        >
+          구글 계정 로그인
         </Button>
       </div>
       <div>
