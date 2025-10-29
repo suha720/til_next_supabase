@@ -2,8 +2,9 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useSignInWithGoogle } from '@/hooks/mutations/useSignInWithGoogle';
-import { useSignInWithKakao } from '@/hooks/mutations/useSignInWithKaKao';
+import { useSignInWithKakao } from '@/hooks/mutations/useSignInWithKakao';
 import { useSignInWithPassword } from '@/hooks/mutations/useSignInWithPassword';
+import { getErrorMessage } from '@/lib/error';
 import Link from 'next/link';
 import { useState } from 'react';
 import { toast } from 'sonner';
@@ -11,13 +12,16 @@ import { toast } from 'sonner';
 function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   // 이메일로 로그인
   const { mutate: signInPassword, isPending: isPendingPassword } =
     useSignInWithPassword({
       onError: error => {
         setPassword('');
         // Sonner 로 띄우기
-        toast.error(error.message, { position: 'top-center' });
+        // 한글 메시지로 교체
+        const message = getErrorMessage(error);
+        toast.error(message, { position: 'top-center' });
       },
     });
 
@@ -30,14 +34,30 @@ function SignIn() {
 
   // 카카오 로그인
   const { mutate: signInWithKakao, isPending: isPendingKakao } =
-    useSignInWithKakao();
-  const handleSignInWithKaKao = () => {
+    useSignInWithKakao({
+      onError: error => {
+        // Sonner 로 띄우기
+        // 한글 메시지로 교체
+        const message = getErrorMessage(error);
+        toast.error(message, { position: 'top-center' });
+      },
+    });
+
+  const handleSignInWithKakao = () => {
     signInWithKakao('kakao');
   };
 
   // 구글 로그인
   const { mutate: signInWithGoogle, isPending: isPendingGoogle } =
-    useSignInWithKakao();
+    useSignInWithGoogle({
+      onError: error => {
+        // Sonner 로 띄우기
+        // 한글 메시지로 교체
+        const message = getErrorMessage(error);
+        toast.error(message, { position: 'top-center' });
+      },
+    });
+
   const handleSignInWithGoogle = () => {
     signInWithKakao('google');
   };
@@ -72,15 +92,16 @@ function SignIn() {
         >
           로그인
         </Button>
-        {/* 카카오 소셜 로그인*/}
+        {/* 카카오 소셜 로그인 */}
         <Button
           className='w-full cursor-pointer'
-          onClick={handleSignInWithKaKao}
+          onClick={handleSignInWithKakao}
           disabled={isPendingKakao}
         >
           카카오 계정 로그인
         </Button>
-        {/* 구글 소셜 로그인*/}
+
+        {/* 구글 소셜 로그인 */}
         <Button
           className='w-full cursor-pointer'
           onClick={handleSignInWithGoogle}
