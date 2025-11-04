@@ -41,8 +41,8 @@ export default function RootLayout({
           {/* 컴포넌트 배치 */}
           <ToastProvider />
 
-          <SessionProvider>
-            <QueryProvider>
+          <QueryProvider>
+            <SessionProvider>
               <header className='h-15 border-b'>
                 <div className='m-auto flex h-full w-full max-w-175 justify-between px-4'>
                   <Link href={'/'} className='flex items-center gap-2'>
@@ -75,8 +75,8 @@ export default function RootLayout({
               <footer className='text-muted-foreground border-t py-10 text-center'>
                 @devsoo
               </footer>
-            </QueryProvider>
-          </SessionProvider>
+            </SessionProvider>
+          </QueryProvider>
         </div>
       </body>
     </html>
