@@ -32,7 +32,21 @@ export default function QueryProvider({
   //     })
   // );
 
-  const [client, setClient] = useState(() => new QueryClient());
+  const [client, setClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            staleTime: 0,
+            gcTime: 5 * 60 * 1000, // 5분
+            refetchOnMount: true,
+            refetchOnWindowFocus: true,
+            refetchOnReconnect: false,
+            refetchInterval: false,
+          },
+        },
+      })
+  );
 
   return (
     <QueryClientProvider client={client}>
