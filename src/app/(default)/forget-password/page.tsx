@@ -31,7 +31,7 @@ export default function ForgetPassword() {
     if (email.trim() === '') return;
     console.log(email);
     // mutation 실행하기
-    mutate({ email: email });
+    mutate({ email });
   };
 
   return (

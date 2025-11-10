@@ -1,4 +1,3 @@
-// Next.js 의 미들웨어임, Supabase 의 미들웨어와는 다름
 import { type NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/middleware';
 

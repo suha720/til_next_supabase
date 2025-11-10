@@ -1,7 +1,6 @@
 import { signInWithPassword } from '@/apis/auth';
 import { UseMutationCallback } from '@/types/types';
 import { useMutation } from '@tanstack/react-query';
-import { toast } from 'sonner';
 
 export function useSignInWithPassword(callback?: UseMutationCallback) {
   return useMutation({

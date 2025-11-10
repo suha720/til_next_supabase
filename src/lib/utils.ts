@@ -1,6 +1,6 @@
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
-// shadcn/ui 설치하면 생성됨 (클래스명 합치기)
+// shadcn/ui 설치하면 생성됨 (클래스명 합쳐주는 유틸함수)
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }

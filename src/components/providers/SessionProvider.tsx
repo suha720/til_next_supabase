@@ -18,7 +18,7 @@ export default function SessionProvider({ children }: SessionProviderProps) {
   // session 데이터 안쪽의  user.id 를 인수로 전달함.
   const { data: profile, isLoading: isProfileLoading } = useProfileData(
     session?.user.id
-  ); // ! 타입단언으로 있다고 정의함, 해제했음
+  );
 
   useEffect(() => {
     // Supbase 의 인증의 상태가 변함을 체크함.

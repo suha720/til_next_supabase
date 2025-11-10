@@ -30,7 +30,6 @@ const useCrateTodo = () => {
         if (!prevTodos) return [newTodo];
         return [...prevTodos, newTodo];
       });
-      
     },
     // 요청이 실패했을때 실행됨
     // error 에는 에러가 자동으로 매개변수로 전달됨.

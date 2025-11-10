@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { useSignUp } from '@/hooks/mutations/useSignUp';
 import { getErrorMessage } from '@/lib/error';
+import { error } from 'console';
 import Link from 'next/link';
 import { useState } from 'react';
 import { toast } from 'sonner';
@@ -14,12 +15,8 @@ function SignUp() {
 
   // Mutation Hook 활용하기
   // 1. 이메일 mutation 훅
-  // mutate : api 호출
-  // isPending : 연속 방지
-  const { mutate, isPending, isError } = useSignUp({
+  const { mutate, isPending } = useSignUp({
     onError: error => {
-      // Sonner 로 띄우기
-      // 한글 메시지로 교체
       const message = getErrorMessage(error);
       toast.error(message, { position: 'top-center' });
     },
@@ -58,7 +55,7 @@ function SignUp() {
           className='w-full'
           onClick={handleSignUpClick}
         >
-          {isPending ? '회원등록 중...' : '회원가입'}
+          {isPending ? '회원등록중...' : '회원가입'}
         </Button>
       </div>
       <div>

@@ -31,7 +31,7 @@ export async function signInWithPassword({
     password,
   });
 
-  // 이 부분이 에러에 대한 정보를 가지고 있음.
+  // 이 부분이 에러의 대한 정보를 가지고 있음.
   if (error) throw error;
 
   return data;
@@ -44,7 +44,7 @@ export async function signInWithOAuth(provider: Provider) {
   return data;
 }
 
-// supabase 의 비밀번호 찾기 이메일을 전송함
+// supabase 의 비밀번호 찾기 이메일을 전송함.
 export async function requestPasswordResetEmail({ email }: { email: string }) {
   const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
     redirectTo: `${process.env.NEXT_PUBLIC_APP_URL}/auth/callback?next=/reset-password`,
